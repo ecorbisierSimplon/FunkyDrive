@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  app:
+    depends_on:
+      - db
+    build: ./funkydrive-backend
+    restart: on-failure
+    env_file:
+      - ../.env/backend
+      - ../.env/postgres.env
+    ports:
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://db:$POSTGRES_DOCKER_PORT/$POSTGRES_DB?useSSL=false",
+        "spring.datasource.username" : "$POSTGRES_USER",
+        "spring.datasource.password" : "$POSTGRES_PASSWORD",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"}'
+    volumes:
+      - .m2:/root/.m2
+      - ./funkydrive-backend:/app
+    stdin_open: true
+    tty: true
+
+  db:
+    container_name: postgres_drive
+    image: postgres:latest
+    restart: always
+    env_file:
+      - ./.env/postgres.env
+    volumes:
+      - ./DataBase/create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+      - ./DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./DataBase/postgres-data:/var/lib/postgresql/data
+    ports:
+      - $POSTGRES_LOCAL_PORT:$POSTGRES_DOCKER_PORT
+
+  adminer:
+    container_name: adminer_quizz
+    image: adminer:latest
+    restart: always
+    ports:
+      - "5050:8080"
+    env_file:
+      - ./.env/postgres.env
+      - ./.env/adminer.env
+    depends_on:
+      - db

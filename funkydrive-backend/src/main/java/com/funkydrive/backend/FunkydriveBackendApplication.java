@@ -8,6 +8,7 @@ public class FunkydriveBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FunkydriveBackendApplication.class, args);
+		System.out.println("essais");
 	}
 
 }
