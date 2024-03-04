@@ -5,6 +5,7 @@ node_modules
 /package
 # .env
 # .env.*
+/.m2
 /env
 !.env.example
 .vercel
