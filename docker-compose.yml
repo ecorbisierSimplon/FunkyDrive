@@ -1,6 +1,9 @@
 version: "3.8"
 services:
-  app:
+  backend:
+    container_name: Server-BACKEND
+    platform: linux/x86_64
+    image: funkydrive_backend:latest
     depends_on:
       - db
     build: ./funkydrive-backend
@@ -14,6 +17,26 @@ services:
       - ./funkydrive-backend:/app
     stdin_open: true
     tty: true
+    command: mvn spring-boot:run
+
+  frontend:
+    container_name: Server-FRONT
+    platform: linux/x86_64
+    image: funkydrive_frontend:latest
+    build:
+      context: ./funkydrive-frontend
+    env_file:
+      - .env
+    ports:
+      - ${SVELTE_LOCAL_PORT}:${SVELTE_DOCKER_PORT}
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/.svelte-kit:/app/.svelte-kit
+      - ./frontend/static:/app/static
+      - /app/node_modules
+    depends_on:
+      - app-backend
+    command: npm run dev --host
 
   db:
     container_name: postgres_drive
@@ -33,7 +56,7 @@ services:
     image: adminer:latest
     restart: always
     ports:
-      - "5050:8080"
+      - ${ADMINER_LOCAL_PORT}:${ADMINER_DOCKER_PORT}
     env_file:
       - .env
     depends_on:
