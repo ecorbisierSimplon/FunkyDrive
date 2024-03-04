@@ -1,0 +1,32 @@
+DATABASE : funkydrive
+
+TABLE users
+id : number - uniq
+sur_name : string
+last_name : string
+email : string
+email_ok : boolean
+key : string
+key_temp : string
+id_role : number
+date_create : datetime
+
+
+TABLE role
+id : number - uniq
+name: string
+rang : number
+date_create : datetime
+
+
+TABLE file
+id : number - uniq
+file_name_origin: string
+file_name_server : string
+id_user : number
+date_create : datetime
+date_change : datetime
+
+
+
+

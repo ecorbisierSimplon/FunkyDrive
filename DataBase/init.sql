@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS quiz;
+DROP DATABASE IF EXISTS funkydrive;
 
-CREATE DATABASE quiz
+CREATE DATABASE funkydrive
     WITH
     OWNER = root
     ENCODING = 'UTF8'
@@ -11,5 +11,5 @@ CREATE DATABASE quiz
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 
-COMMENT ON DATABASE quiz
+COMMENT ON DATABASE funkydrive
     IS 'default administrative connection database';
