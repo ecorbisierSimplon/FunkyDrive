@@ -1,0 +1,63 @@
+version: "3.8"
+services:
+  backend:
+    container_name: funkydrive_backend
+    platform: linux/x86_64
+    image: funkydrive_backend:latest
+    depends_on:
+      - db
+    build: ./funkydrive-backend
+    restart: on-failure
+    env_file:
+      - .env
+    ports:
+      - ${SPRING_LOCAL_PORT}:${SPRING_DOCKER_PORT}
+    volumes:
+      - .m2:/root/.m2
+      - ./funkydrive-backend:/app
+    stdin_open: true
+    tty: true
+    command: mvn spring-boot:run
+
+  frontend:
+    container_name: funkydrive_frontend
+    platform: linux/x86_64
+    image: funkydrive_frontend:latest
+    build:
+      context: ./funkydrive-frontend
+    env_file:
+      - .env
+    ports:
+      - ${SVELTE_LOCAL_PORT}:${SVELTE_DOCKER_PORT}
+    volumes:
+      - ./funkydrive-frontend/src:/app/src
+      - ./funkydrive-frontend/.svelte-kit:/app/.svelte-kit
+      - ./funkydrive-frontend/static:/app/static
+      - /app/node_modules
+    depends_on:
+      - backend
+    command: npm run dev --host
+
+  db:
+    container_name: postgres_drive
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./DataBase/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./DataBase/create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
+      - ./DataBase/postgres-data:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_LOCAL_PORT}:${POSTGRES_DOCKER_PORT}
+
+  adminer:
+    container_name: adminer_drive
+    image: adminer:latest
+    restart: always
+    ports:
+      - ${ADMINER_LOCAL_PORT}:${ADMINER_DOCKER_PORT}
+    env_file:
+      - .env
+    depends_on:
+      - db
