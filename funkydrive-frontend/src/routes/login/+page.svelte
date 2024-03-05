@@ -61,7 +61,12 @@
 
 <style lang="scss">
 	form {
-		max-width: 500px;
+		width: 500px;
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		top: 50px;
+		
 	}
 	p {
 		color: aliceblue;
