@@ -25,7 +25,7 @@
 
 <svelte:head>
 	<title>QuizzOmnes | Create</title>
-	<meta name="description" content="QuizzOmnes" />
+	<meta name="description" content="Drive" />
 </svelte:head>
 
 {#if $session}

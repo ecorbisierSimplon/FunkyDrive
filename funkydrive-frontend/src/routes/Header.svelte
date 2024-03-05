@@ -25,11 +25,11 @@
 		</div>
 		<nav class="nav">
 			<ul>
-				<li><a href="/"><i class="fa fa-home"></i> home</a></li>
-				<li><a href="/quizz"><i class="fa fa-clipboard-check"></i> Choice quizz</a></li>
+				<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+				<li><a href="/drive"><i class="fa fa-clipboard-check"></i> Choice file</a></li>
 				{#if $session}
 					<li>
-						<a href="/create_quizz"><i class="fa fa-edit"></i> Create quizz</a>
+						<a href="/create_drive"><i class="fa fa-edit"></i> Create Drive</a>
 					</li>
 				{/if}
 				{#if !$session}
@@ -45,7 +45,7 @@
 		</nav>
 	</div>
 </header>
-<div id="formSearch"></div>
+<div id="File Search"></div>
 
 <style lang="scss">
 	$mobil-max: 748px;
