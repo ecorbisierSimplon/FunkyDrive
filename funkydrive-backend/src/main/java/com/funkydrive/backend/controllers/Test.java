@@ -1,4 +1,4 @@
-package com.funkydrive.backend.controller;
+package com.funkydrive.backend.controllers;
 
 public class Test {
     public Test() {
