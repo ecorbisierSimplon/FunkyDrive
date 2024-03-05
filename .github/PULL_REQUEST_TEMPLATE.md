@@ -1,84 +1,80 @@
 <!--
-     For Work In Progress Pull Requests, please use the Draft PR feature,
-     see https://github.blog/2019-02-14-introducing-draft-pull-requests/ for further details.
+     Pour les Pull Requests en cours, veuillez utiliser la fonctionnalité de Pull Request en mode brouillon,
+     consultez https://github.blog/2019-02-14-introducing-draft-pull-requests/ pour plus de détails.
 
-     For a timely review/response, please avoid force-pushing additional
-     commits if your PR already received reviews or comments.
+     Pour une révision/réponse rapide, veuillez éviter de pousser de force des commits supplémentaires
+     si votre PR a déjà reçu des avis ou des commentaires.
 
-     Before submitting a Pull Request, please ensure you've done the following:
-     - 📖 Read the Forem Contributing Guide: https://developers.forem.com/contributing-guide/forem#create-a-pull-request
-     - 📖 Read the Forem Code of Conduct: https://github.com/forem/forem/blob/main/CODE_OF_CONDUCT.md
-     - 👷‍♀️ Create small PRs. In most cases this will be possible.
-     - ✅ Provide tests for your changes.
-     - 📝 Use descriptive commit messages.
-     - 📗 Update any related documentation and include any relevant screenshots.
+     Avant de soumettre une Pull Request, assurez-vous d'avoir effectué les actions suivantes :
+     - 📖 Lire le guide de contribution à Forem : https://developers.forem.com/contributing-guide/forem#create-a-pull-request
+     - 📖 Lire le code de conduite de Forem : https://github.com/forem/forem/blob/main/CODE_OF_CONDUCT.md
+     - 👷‍♀️ Créer des PRs de petite taille. Dans la plupart des cas, cela sera possible.
+     - ✅ Fournir des tests pour vos modifications.
+     - 📝 Utiliser des messages de commit descriptifs.
+     - 📗 Mettre à jour toute documentation associée et inclure des captures d'écran pertinentes.
 
-     NOTE: Pull Requests from forked repositories will need to be reviewed by
-     a Forem Team member before any CI builds will run. Once your PR is approved
-     with a `/ci` reply to the PR, it will be allowed to run subsequent builds without
-     manual approval.
+     REMARQUE : Les Pull Requests à partir de référentiels forkés devront être examinées par
+     un membre de l'équipe Forem avant que des constructions CI ne soient exécutées. Une fois votre PR approuvée
+     avec une réponse "/ci" à la PR, elle sera autorisée à exécuter des constructions ultérieures sans
+     approbation manuelle.
 -->
 
-## What type of PR is this? (check all applicable)
+## Quel type de PR est-ce ? (cochez tout ce qui s'applique)
 
-- [ ] Refactor
-- [ ] Feature
-- [ ] Bug Fix
-- [ ] Optimization
-- [ ] Documentation Update
+- [ ] Refactorisation
+- [ ] Fonctionnalité
+- [ ] Correction de bug
+- [ ] Optimisation
+- [ ] Mise à jour de la documentation
 
 ## Description
 
-## Checklist
+> _Veuillez remplacer cette ligne par une description de votre travail_
 
-- [ ] My PR has a related issue.
-- [ ] I correctly filled the PR template
-- [ ] I self reviwed my changes
-- [ ] I manually check my change
+## Liste de vérification
 
-## Related Tickets & Documents
+- [ ] Ma PR a un problème lié.
+- [ ] J'ai correctement rempli le modèle de PR.
+- [ ] J'ai examiné mes modifications moi-même.
+- [ ] J'ai vérifié manuellement mon changement.
 
-<!--
-For pull requests that relate or close an issue, please include them
-below.  We like to follow [Github's guidance on linking issues to pull requests](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue).
+## Gestion des Tickets
 
-For example having the text: "closes #1234" would connect the current pull
-request to issue 1234.  And when we merge the pull request, Github will
-automatically close the issue.
--->
+> [!TIP]
+>
+> Pour les pull requests liées à un problème ou les fermant, veuillez les inclure
+> ci-dessous. Nous aimons suivre [les directives de Github sur la liaison des problèmes aux pull requests](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue).
+>
+> Par exemple, inclure le texte "closes #1234" connecterait la pull request actuelle
+> au problème 1234. Et lorsque nous fusionnerons la pull request, Github fermera automatiquement le problème.
 
 - Related Issue #
 - Closes #
 
-## QA Instructions, Screenshots, Recordings
+## Instructions de QA, captures d'écran, enregistrements
 
-_Please replace this line with instructions on how to test your changes, a note
-on the devices and browsers this has been tested on, as well as any relevant
-images for UI changes._
+> _Veuillez remplacer cette ligne par des instructions sur la façon de tester vos modifications, une note
+> sur les appareils et navigateurs sur lesquels cela a été testé, ainsi que toutes les images pertinentes pour les changements d'interface utilisateur._
 
-### UI accessibility checklist
+### Liste de vérification d'accessibilité de l'interface utilisateur
 
-_If your PR includes UI changes, please utilize this checklist:_
+> [!IMPORTANT]
+> Si votre PR inclut des modifications de l'interface utilisateur, veuillez utiliser cette liste de vérification :
 
-- [ ] Semantic HTML implemented?
-- [ ] Keyboard operability supported?
-- [ ] Checked with [axe DevTools](https://www.deque.com/axe/) and addressed `Critical` and `Serious` issues?
-- [ ] Color contrast tested?
+- [ ] HTML sémantique implémenté ?
+- [ ] Prise en charge de l'opérabilité clavier ?
+- [ ] Vérifié avec [axe DevTools](https://www.deque.com/axe/) et résolu les problèmes `Critiques` et `Sérieux` ?
+- [ ] Contraste des couleurs testé ?
 
-_For more info, check out the
-[Forem Accessibility Docs](https://developers.forem.com/frontend/accessibility)._
+Pour plus d'informations, consultez la
+[documentation d'accessibilité de Forem](https://developers.forem.com/frontend/accessibility).
 
-## Added/updated tests?
+## Tests ajoutés/mis à jour ?
 
-_We encourage you to keep the code coverage percentage at 80% and above._
+> [!NOTE]
+> Nous vous encourageons à maintenir un pourcentage de couverture de code de 80% et plus.
 
-- [ ] Yes
-- [ ] No, and this is why: _please replace this line with details on why tests
-      have not been included_
-- [ ] I need help with writing tests
-
-## [optional] Are there any post deployment tasks we need to perform?
-
-## [optional] What gif best describes this PR or how it makes you feel?
-
-![alt_text](gif_link)
+- [ ] Oui
+- [ ] Non, et voici pourquoi :
+  > _veuillez remplacer cette ligne par des détails sur la raison pour laquelle les tests n'ont pas été inclus_
+- [ ] J'ai besoin d'aide pour écrire des tests
