@@ -10,14 +10,17 @@
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="QuizzOmnes" />
+	<meta name="description" content="Drive" />
 </svelte:head>
 
 <section>
-	<h1>Survey</h1>
-
-	<h2>Hello{name},</h2>
+	<h2>Hello {name},</h2>
 </section>
 
 <style>
+	h2{
+		text-align: center;
+		position: relative;
+		top: 100px;
+	}
 </style>
