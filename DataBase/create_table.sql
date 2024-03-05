@@ -17,3 +17,4 @@ INSERT INTO "role" ("id", "text", "rang", "date_create") VALUES
 (1,	'Admin',	100,	'NOW()'),
 (2,	'Utilisateur',	2,	'NOW()'),
 (3,	'Visiteur',	0,	'NOW()');
+

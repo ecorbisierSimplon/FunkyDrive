@@ -2,21 +2,21 @@ DATABASE : funkydrive
 
 TABLE users
 id : number - uniq
-sur_name : string
+first_name : string
 last_name : string
 email : string
-email_ok : boolean
+email_ok : boolean (default : false)
 key : string
 key_temp : string
 id_role : number
-date_create : datetime
+date_create : datetime (default : NOW())
 
 
 TABLE role
 id : number - uniq
 name: string
 rang : number
-date_create : datetime
+date_create : datetime (default : NOW())
 
 
 TABLE file
@@ -24,9 +24,15 @@ id : number - uniq
 file_name_origin: string
 file_name_server : string
 id_user : number
-date_create : datetime
-date_change : datetime
+id_directory : number (default : 0)
+date_create : datetime (default : NOW())
+date_change : datetime (default : NOW())
 
 
-
-
+TABLE directory
+id : number - uniq
+name: string
+id_directory: number  # si c'est un sous répertoire (default : 0)
+id_user : number
+date_create : datetime (default : NOW())
+date_change : datetime (default : NOW())
