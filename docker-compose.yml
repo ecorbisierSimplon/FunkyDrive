@@ -7,7 +7,7 @@ services:
     depends_on:
       - db
     build: ./funkydrive-backend
-    restart: on-failure
+    restart: unless-stopped
     env_file:
       - .env
     ports:
@@ -17,12 +17,12 @@ services:
       - ./funkydrive-backend:/app
     stdin_open: true
     tty: true
-    command: mvn spring-boot:run
 
   frontend:
     container_name: funkydrive_frontend
     platform: linux/x86_64
     image: funkydrive_frontend:latest
+    restart: unless-stopped
     build:
       context: ./funkydrive-frontend
     env_file:
@@ -35,13 +35,13 @@ services:
       - ./funkydrive-frontend/static:/app/static
       - /app/node_modules
     depends_on:
-      - backend
+      - db
     command: npm run dev --host
 
   db:
     container_name: postgres_drive
     image: postgres:latest
-    restart: always
+    restart: unless-stopped
     env_file:
       - .env
     volumes:
@@ -54,10 +54,13 @@ services:
   adminer:
     container_name: adminer_drive
     image: adminer:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - ${ADMINER_LOCAL_PORT}:${ADMINER_DOCKER_PORT}
     env_file:
       - .env
     depends_on:
       - db
+
+volumes:
+  postgres-data:
