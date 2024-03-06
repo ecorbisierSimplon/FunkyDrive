@@ -48,51 +48,50 @@ public class User {
     }
 
     public Long getId() {
-	return id;
+        return id;
     }
 
     public String getFirstName() {
-	return firstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-	this.firstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-	return lastName;                                                                                                                                                                                                                                                                                                                                                                                                            
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-	this.lastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getEmail() {
-	return email;
+        return email;
     }
 
     public boolean isEmailOk() {
-	return emailOk;
+        return emailOk;
     }
 
     public void setEmailOk(boolean emailOk) {
-	this.emailOk = emailOk;
+        this.emailOk = emailOk;
     }
 
     public String getKey() {
-	return key;
+        return key;
     }
 
     public void setKey(String key) {
-	this.key = key;
+        this.key = key;
     }
 
     public String getKeyTemp() {
-	return keyTemp;
+        return keyTemp;
     }
 
     public void setKeyTemp(String keyTemp) {
-	this.keyTemp = keyTemp;
+        this.keyTemp = keyTemp;
     }
 }
-                                                                                                                                                                                                                                                                                
