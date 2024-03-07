@@ -1,9 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import logo from '$lib/images/logo.png';
 	import { session, sessionKey } from './session';
 	import { getCookie } from 'typescript-cookie';
+
 	let hostname: string = '';
+	let logo: string;
+
+	export let data: { api: string };
+
+	console.log('Adresse url = ' + data.api);
+
 	onMount(() => {
 		hostname = window.location.origin;
 		if (getCookie('session')) {
@@ -13,6 +19,8 @@
 			session.set(false);
 			sessionKey.set('');
 		}
+
+		logo = 'image/logo.png';
 	});
 </script>
 
