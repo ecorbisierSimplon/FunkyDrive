@@ -33,7 +33,7 @@
 
 ## Liste de vérification
 
-- [ ] Ma PR a un problème lié.
+- [ ] Ma PR a un ticket lié.
 - [ ] J'ai correctement rempli le modèle de PR.
 - [ ] J'ai examiné mes modifications moi-même.
 - [ ] J'ai vérifié manuellement mon changement.
