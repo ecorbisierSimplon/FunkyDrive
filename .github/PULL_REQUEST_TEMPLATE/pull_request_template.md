@@ -33,23 +33,10 @@
 
 ## Liste de vérification
 
-- [ ] Ma PR a un problème lié.
+- [ ] Ma PR a un ticket lié.
 - [ ] J'ai correctement rempli le modèle de PR.
 - [ ] J'ai examiné mes modifications moi-même.
 - [ ] J'ai vérifié manuellement mon changement.
-
-## Gestion des Tickets
-
-> [!TIP]
->
-> Pour les pull requests liées à un problème ou les fermant, veuillez les inclure
-> ci-dessous. Nous aimons suivre [les directives de Github sur la liaison des problèmes aux pull requests](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue).
->
-> Par exemple, inclure le texte "closes #1234" connecterait la pull request actuelle
-> au problème 1234. Et lorsque nous fusionnerons la pull request, Github fermera automatiquement le problème.
-
-- Related Issue #
-- Closes #
 
 ## Instructions de QA, captures d'écran, enregistrements
 
