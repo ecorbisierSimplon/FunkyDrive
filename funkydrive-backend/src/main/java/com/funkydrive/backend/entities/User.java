@@ -33,6 +33,9 @@ public class User {
     @Column(name = "key")
     private String key;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "key_temp")
     private String keyTemp;
 
@@ -89,6 +92,14 @@ public class User {
 
     public void setKey(String key) {
 	this.key = key;
+    }
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword(String password) {
+	this.password = password;
     }
 
     public String getKeyTemp() {

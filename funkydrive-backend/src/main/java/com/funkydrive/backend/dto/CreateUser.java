@@ -20,6 +20,10 @@ public class CreateUser {
     @Size(min = 8)
     private String key;
 
+    @NotBlank
+    @Size(min = 8)
+    private String password;
+
     public CreateUser() {
     }
 
@@ -53,6 +57,14 @@ public class CreateUser {
 
     public void setKey(String key) {
 	this.key = key;
+    }
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword(String password) {
+	this.password = password;
     }
 
 }
