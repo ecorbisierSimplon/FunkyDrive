@@ -1,0 +1,18 @@
+@media (prefers-color-scheme: light) {
+	.element {
+		color: black;
+		background-color: white;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.element {
+		color: white;
+		background-color: black;
+	}
+}
+
+body {
+	color: light-dark(black, white);
+	background-color: light-dark(white, black);
+}

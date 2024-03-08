@@ -1,9 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import logo from '$lib/images/logo.png';
 	import { session, sessionKey } from './session';
 	import { getCookie } from 'typescript-cookie';
+	import type { ActionData } from './$types';
+
+	export let data: ActionData;
 	let hostname: string = '';
+	let logo: string = data.api + '/image/logo.png';
+
+	console.log('Header Adresse url = ' + logo);
+
 	onMount(() => {
 		hostname = window.location.origin;
 		if (getCookie('session')) {
