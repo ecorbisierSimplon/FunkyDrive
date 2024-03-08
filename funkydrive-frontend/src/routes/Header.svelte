@@ -2,13 +2,13 @@
 	import { onMount } from 'svelte';
 	import { session, sessionKey } from './session';
 	import { getCookie } from 'typescript-cookie';
+	import type { ActionData } from './$types';
 
+	export let data: ActionData;
 	let hostname: string = '';
-	let logo: string;
+	let logo: string = data.api + '/image/logo.png';
 
-	export let data: { api: string };
-
-	console.log('Adresse url = ' + data.api);
+	console.log('Header Adresse url = ' + logo);
 
 	onMount(() => {
 		hostname = window.location.origin;
@@ -19,8 +19,6 @@
 			session.set(false);
 			sessionKey.set('');
 		}
-
-		logo = 'image/logo.png';
 	});
 </script>
 
