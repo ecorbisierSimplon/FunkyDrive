@@ -20,11 +20,10 @@
         <CreateFolder/>
     </div>
 
-
 </div>
 
-
 <div id="recently_open">
+
     <h1>Recently open</h1>
 
 
@@ -63,3 +62,4 @@
 
 
 </style>
+
