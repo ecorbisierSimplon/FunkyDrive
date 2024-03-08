@@ -1,6 +1,7 @@
 
 package com.funkydrive.backend.services;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.funkydrive.backend.dto.CreateUser;
@@ -23,10 +24,15 @@ public class UserService {
 	user.setFirstName(inputs.getFirstName());
 	user.setLastName(inputs.getLastName());
 	user.setEmail(inputs.getEmail());
+
+	String rawPassword = inputs.getPassword();
+	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	String hashedPassword = passwordEncoder.encode(rawPassword);
+	user.setPassword(hashedPassword);
+
 	userRepository.save(user);
 
 	return user.getId();
-
     }
 
     public User getUserById(Long id) {
@@ -41,6 +47,13 @@ public class UserService {
 	user.setFirstName(input.getFirstName());
 	user.setLastName(input.getLastName());
 	user.setEmail(input.getEmail());
+
+	if (input.getPassword() != null) {
+	    String rawPassword = input.getPassword();
+	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	    String hashedPassword = passwordEncoder.encode(rawPassword);
+	    user.setPassword(hashedPassword);
+	}
 
 	userRepository.save(user);
     }
