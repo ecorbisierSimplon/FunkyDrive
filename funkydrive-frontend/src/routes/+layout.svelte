@@ -16,7 +16,4 @@
 </div>
 
 <style>
-	* {
-		color: #d6d6d6;
-	}
 </style>

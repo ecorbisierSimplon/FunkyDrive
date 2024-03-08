@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { getCookie } from 'typescript-cookie';
-	let name: string;
+	let name: string = '';
 	onMount(() => {
 		name = getCookie('firstname') as string;
 		name = name === undefined ? '' : ' ' + name;
@@ -14,13 +14,8 @@
 </svelte:head>
 
 <section>
-	<h2>Hello {name},</h2>
+	<h2>Hello{name},</h2>
 </section>
 
 <style>
-	h2{
-		text-align: center;
-		position: relative;
-		top: 100px;
-	}
 </style>
