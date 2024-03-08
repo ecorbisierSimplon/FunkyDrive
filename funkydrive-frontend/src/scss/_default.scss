@@ -1,18 +1,12 @@
-@media (prefers-color-scheme: light) {
-	.element {
-		color: black;
-		background-color: white;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	.element {
-		color: white;
-		background-color: black;
-	}
-}
-
-body {
-	color: light-dark(black, white);
-	background-color: light-dark(white, black);
-}
+// @media (prefers-color-scheme: dark) {
+// 	body {
+// 		color: white;
+// 		background-color: black;
+// 	}
+// }
+// @media (prefers-color-scheme: light) {
+// 	body {
+// 		color: black;
+// 		background-color: rgb(180, 100, 100);
+// 	}
+// }

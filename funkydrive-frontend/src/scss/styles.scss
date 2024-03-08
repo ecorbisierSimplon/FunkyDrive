@@ -1,11 +1,12 @@
 @import '../../node_modules/normalize-scss/sass/normalize';
 @include normalize();
 @import '../../node_modules/bootstrap/scss/bootstrap';
+@import 'fontawesome';
 @import 'variables';
 @import 'functions';
 @import 'mixins';
 @import 'root';
+@import 'default';
 @import 'bases';
 @import 'buttons';
 @import 'elements';
-@import 'fontawesome';
