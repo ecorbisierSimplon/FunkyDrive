@@ -8,8 +8,6 @@
 	let hostname: string = '';
 	let logo: string = data.api + '/image/logo.png';
 
-	console.log('Header Adresse url = ' + logo);
-
 	onMount(() => {
 		hostname = window.location.origin;
 		if (getCookie('session')) {
@@ -27,6 +25,7 @@
 		<div id="logo" class="logo">
 			<a href={hostname}>
 				<img src={logo} alt="" />
+				<span>FunkyDrive</span>
 			</a>
 		</div>
 		<nav class="nav">
@@ -80,9 +79,15 @@
 				padding: 5px;
 			}
 			.logo {
-				margin: auto 10px;
+				margin: auto 20px;
 				@media screen and (max-width: $mobil-max) {
-					margin: auto 20px;
+					margin: auto 10px;
+				}
+				a {
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					align-items: center;
 				}
 				img {
 					width: 100%;
@@ -90,6 +95,16 @@
 					max-width: 100px;
 					@media screen and (max-width: $mobil-max) {
 						width: 80%;
+						max-width: 70px;
+					}
+				}
+				span {
+					font-family: 'Madimi One', sans-serif;
+					font-size: 2.9rem;
+					margin-left: 26px;
+					@media screen and (max-width: $mobil-max) {
+						font-size: 2rem;
+						margin-left: 10px;
 					}
 				}
 			}
