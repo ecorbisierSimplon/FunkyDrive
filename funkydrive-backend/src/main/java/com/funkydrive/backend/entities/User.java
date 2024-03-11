@@ -109,4 +109,9 @@ public class User {
     public void setKeyTemp(String keyTemp) {
 	this.keyTemp = keyTemp;
     }
+
+    public void setRole(Role role) {
+	this.role = role;
+    }
+
 }

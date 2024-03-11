@@ -18,11 +18,15 @@ public class CreateUser {
     private String email;
 
     @Size(min = 8)
-    private String key;
+    private String pass;
 
     @NotBlank
     @Size(min = 8)
     private String password;
+
+    @NotBlank
+    @Size(min = 8)
+    private String passwordValidation;
 
     public CreateUser() {
     }
@@ -51,14 +55,6 @@ public class CreateUser {
 	this.email = email;
     }
 
-    public String getKey() {
-	return key;
-    }
-
-    public void setKey(String key) {
-	this.key = key;
-    }
-
     public String getPassword() {
 	return password;
     }
@@ -67,4 +63,11 @@ public class CreateUser {
 	this.password = password;
     }
 
+    public String getPass() {
+	return pass;
+    }
+
+    public String getPasswordValidation() {
+	return passwordValidation;
+    }
 }
