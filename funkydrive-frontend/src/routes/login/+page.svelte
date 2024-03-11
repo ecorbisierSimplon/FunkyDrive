@@ -21,6 +21,7 @@
 	});
 </script>
 
+<h2>Login</h2>
 {#if $session}
 	<div class="modals">
 		<div class="">
@@ -30,44 +31,53 @@
 		</div>
 	</div>
 {:else}
-	<form method="POST" action="?/login">
-		<div class="mb-3 mt-3">
-			<label class="form-label"
-				>Email
-				<input name="email" type="text" class="form-control" />
-			</label>
-		</div>
-		<div class="mb-3">
-			<label class="form-label"
-				>Password
-				<input name="password" type="password" class="form-control" />
-			</label>
-		</div>
-		<div class="error">
-			{#if form?.errorEmail}
-				<span>{form?.errorEmail}</span>
-			{/if}
-		</div>
-		<div class="form-check mb-3">
-			<label class="form-check-label">
-				<input class="form-check-input" type="checkbox" name="remember" /> Remember me
-			</label>
-		</div>
+	<section>
+		<form method="POST" action="?/login">
+			<div class="mb-3 mt-3">
+				<label class="form-label"
+					>Email
+					<input name="email" type="text" class="form-control" />
+				</label>
+			</div>
+			<div class="mb-3">
+				<label class="form-label"
+					>Password
+					<input name="password" type="password" class="form-control" />
+				</label>
+			</div>
+			<div class="error">
+				{#if form?.errorEmail}
+					<span>{form?.errorEmail}</span>
+				{/if}
+			</div>
+			<div class="form-check mb-3">
+				<label class="form-check-label">
+					<input class="form-check-input" type="checkbox" name="remember" /> Remember me
+				</label>
+			</div>
 
-		<button class="submit"><i class="fas fa-user-alt"></i> Log in</button>
-		<!-- <button formaction="?/register">Register</button> -->
-	</form>
+			<button class="submit"><i class="fas fa-user-alt"></i> Log in</button>
+			<!-- <button formaction="?/register">Register</button> -->
+		</form>
+	</section>
 {/if}
 
 <style lang="scss">
+	section {
+		display: flex;
+	}
 	form {
 		width: 500px;
 		position: relative;
-		margin-left: auto;
-		margin-right: auto;
-		top: 50px;
-		
+		margin: auto;
+		padding: 30px;
+		border-radius: 20px;
+		background-color: hsl(204, 100%, 95%);
+		box-shadow:
+			0px 0px 5px 0px hsl(204, 100%, 95%),
+			4px 4px 8px hsl(208 25% 43% / 1);
 	}
+
 	p {
 		color: aliceblue;
 	}

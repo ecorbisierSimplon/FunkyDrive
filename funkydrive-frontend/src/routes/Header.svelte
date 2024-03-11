@@ -8,6 +8,18 @@
 	let hostname: string = '';
 	let logo: string = data.api + '/image/logo.png';
 
+	let navCheck = false;
+
+	function handleMenu() {
+		if (navCheck) {
+			navCheck = false;
+			document.body.removeEventListener('click', handleMenu);
+		} else {
+			navCheck = true;
+			document.body.addEventListener('click', handleMenu);
+		}
+	}
+
 	onMount(() => {
 		hostname = window.location.origin;
 		if (getCookie('session')) {
@@ -29,30 +41,38 @@
 			</a>
 		</div>
 		<nav class="nav">
-			<input type="checkbox" id="navicon-checkbox" class="navicon__checkbox" />
-			<label for="navicon-checkbox" class="navicon__label">
+			<input
+				type="checkbox"
+				id="navicon-checkbox"
+				class="navicon__checkbox"
+				bind:checked={navCheck}
+			/>
+			<!-- <label for="navicon-checkbox" class="navicon__label"> -->
+			<!-- for="navicon-checkbox" -->
+			<button class="navicon__label" on:click|stopPropagation={handleMenu}>
 				<span class="navicon__box">
 					<span class="navicon__hamburger"></span>
 					<span class="navicon__hamburger"></span>
 					<span class="navicon__hamburger"></span>
 				</span>
-			</label>
+				<!-- </label> -->
+			</button>
 			<div class="navbar">
 				<ul>
-					<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-					<li><a href="/drive"><i class="fa fa-clipboard-check"></i> Choice file</a></li>
+					<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+					<li><a href="/drive"><i class="fa fa-clipboard-check"></i>Choice file</a></li>
 					{#if $session}
 						<li>
-							<a href="/create_drive"><i class="fa fa-edit"></i> Create Drive</a>
+							<a href="/create_drive"><i class="fa fa-edit"></i>Create Drive</a>
 						</li>
 					{/if}
 					{#if !$session}
-						<li><a href="/register"><i class="far fa-id-card"></i> Register</a></li>
-						<li><a href="/login"><i class="fa fa-user-alt"></i> Login</a></li>
+						<li><a href="/register"><i class="far fa-id-card"></i>Register</a></li>
+						<li><a href="/login"><i class="fa fa-user-alt"></i>Login</a></li>
 					{/if}
 					{#if $session}
 						<li>
-							<a href="/logout"><i class="fa fa-user-alt-slash"></i> Logout</a>
+							<a href="/logout"><i class="fa fa-user-alt-slash"></i>Logout</a>
 						</li>
 					{/if}
 				</ul>
@@ -147,10 +167,13 @@
 						right: 0px;
 						top: 0px;
 						box-shadow: 2px 2px 9px 2px hsla(310, 5%, 23%, 0.637);
-						width: 260px;
+						width: 35vw;
 						height: 100vh;
 						background-color: hsl(212, 53%, 75%);
 						padding: 8px;
+						@media screen and (max-width: $mobil-max) {
+							width: 260px;
+						}
 					}
 				}
 			}
@@ -215,11 +238,11 @@
 			position: absolute;
 			display: block;
 			z-index: 998;
-			right: -165px;
+			right: 0px;
 			top: 12px;
 			overflow: hidden;
-			transition: 1.5s all 0s;
-			width: 170px;
+			transition: 0.5s all 0s;
+			width: 4px;
 			height: 50px;
 			background-color: #9e0000;
 			padding: 0px;
@@ -229,6 +252,11 @@
 			list-style: none;
 			position: relative;
 			top: 90px;
+			i {
+				text-align: center;
+				width: 30px;
+				margin-right: 5px;
+			}
 		}
 	}
 </style>
