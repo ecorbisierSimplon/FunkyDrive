@@ -17,7 +17,6 @@ public class CreateUser {
     @Email
     private String email;
 
-    @Size(min = 8)
     private String pass;
 
     @NotBlank
@@ -27,10 +26,6 @@ public class CreateUser {
     @NotBlank
     @Size(min = 8)
     private String passwordValidation;
-
-    @NotBlank
-    @Size(min = 8)
-    private String password;
 
     public CreateUser() {
     }
@@ -67,7 +62,6 @@ public class CreateUser {
 	this.password = password;
     }
 
-<<<<<<< HEAD
     public String getPass() {
 	return pass;
     }
@@ -75,14 +69,5 @@ public class CreateUser {
     public String getPasswordValidation() {
 	return passwordValidation;
     }
-=======
-    public String getPassword() {
-	return password;
-    }
 
-    public void setPassword(String password) {
-	this.password = password;
-    }
-
->>>>>>> e8f30c9434cc8947c82315a838973b98171dd97e
 }
