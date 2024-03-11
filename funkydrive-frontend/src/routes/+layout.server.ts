@@ -6,5 +6,6 @@ import { API_CLIENT_URL } from '$lib/server/variables';
 // it so that it gets served as a static asset in production
 
 export const load: PageServerLoad = () => {
-	return { api: getWritable(API_CLIENT_URL) };
+	const urlApi: string = getWritable(API_CLIENT_URL) as string;
+	return { api: urlApi };
 };
