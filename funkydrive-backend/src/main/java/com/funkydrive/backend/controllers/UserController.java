@@ -1,6 +1,7 @@
 
 package com.funkydrive.backend.controllers;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,8 +33,9 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public long create(@RequestBody @Valid CreateUser inputs) {
+    public long create(@RequestBody @Valid CreateUser inputs) throws BadRequestException {
 	return userService.createUser(inputs);
+
     }
 
     @GetMapping("/{id}")
