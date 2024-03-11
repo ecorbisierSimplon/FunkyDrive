@@ -1,6 +1,9 @@
 package com.funkydrive.backend.services;
 
+<<<<<<< HEAD
 import org.apache.coyote.BadRequestException;
+=======
+>>>>>>> e8f30c9434cc8947c82315a838973b98171dd97e
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +40,10 @@ public class UserService {
 	user.setFirstName(inputs.getFirstName());
 	user.setLastName(inputs.getLastName());
 	user.setEmail(inputs.getEmail());
+<<<<<<< HEAD
 	user.setRole(role);
+=======
+>>>>>>> e8f30c9434cc8947c82315a838973b98171dd97e
 
 	String rawPassword = inputs.getPassword();
 	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -67,7 +73,10 @@ public class UserService {
 	    String hashedPassword = passwordEncoder.encode(rawPassword);
 	    user.setPassword(hashedPassword);
 	}
+<<<<<<< HEAD
 	// Add any other necessary update logic here
+=======
+>>>>>>> e8f30c9434cc8947c82315a838973b98171dd97e
 
 	userRepository.save(user);
     }

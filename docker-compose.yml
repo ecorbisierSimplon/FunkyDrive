@@ -11,7 +11,7 @@ services:
     env_file:
       - .env
     ports:
-      - ${SPRING_LOCAL_PORT}:${SPRING_DOCKER_PORT}
+      - ${SPRING_CLIENT_PORT}:${SPRING_DOCKER_PORT}
     volumes:
       - .m2:/root/.m2
       - ./funkydrive-backend:/app
@@ -28,7 +28,7 @@ services:
     env_file:
       - .env
     ports:
-      - ${SVELTE_LOCAL_PORT}:${SVELTE_DOCKER_PORT}
+      - ${SVELTE_CLIENT_PORT}:${SVELTE_DOCKER_PORT}
     volumes:
       - ./funkydrive-frontend/src:/app/src
       - ./funkydrive-frontend/.svelte-kit:/app/.svelte-kit

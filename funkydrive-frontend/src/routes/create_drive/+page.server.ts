@@ -1,8 +1,8 @@
 // import { writeFileSync } from 'fs';
 import { randomUUID } from 'crypto';
 import type { PageServerLoad, Actions } from './$types';
+import { API_URL } from '$lib/packages/variables.server';
 
-const API_URL = process.env.API_URL;
 export const load: PageServerLoad = async ({ cookies }) => {
 	cookies.set('test', 'test', { path: '/' });
 	return { api: API_URL };
