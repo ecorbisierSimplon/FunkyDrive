@@ -11,7 +11,7 @@
 	<div class="modals">
 		<div class="">
 			<h3>Yous is registered !</h3>
-			<p>Welcome back, {data.first_name}.</p>
+			<p>Welcome back, {data.firstName}.</p>
 			<p>You have created Successfully your account, please log in!</p>
 			<button class="plus" on:click={() => goto('/login')}>Ok</button>
 		</div>
@@ -20,74 +20,93 @@
 	<section>
 		<form method="POST" action="?/register">
 			<div class="flex">
-				<div class="mb-1">
+				<div class="">
 					<label class="form-label">
 						First name
-						<input type="text" name="firstName" class="form-control" />
-						{#if form?.firstNameError != undefined}
-							<span class="error">{form?.firstNameError}</span>
-						{/if}
+						<input
+							type="text"
+							name="firstName"
+							class="form-control {form?.firstNameError != undefined ? 'error' : ''}"
+							value={form?.firstName ?? ''}
+						/>
+						<span class="error">{form?.firstNameError ?? ''}</span>
 					</label>
 				</div>
-				<div class="mb-1">
+				<div class="">
 					<label class="form-label">
 						Last name
-						<input type="text" name="lastName" class="form-control" />
-						{#if form?.lastNameError != undefined}
-							<span class="error">{form?.lastNameError}</span>
-						{/if}
+						<input
+							type="text"
+							name="lastName"
+							class="form-control {form?.lastNameError != undefined ? 'error' : ''}"
+							value={form?.lastName ?? ''}
+						/>
+						<span class="error">{form?.lastNameError ?? ''}</span>
 					</label>
 				</div>
 			</div>
 			<div>
-				<div class="mb-1">
+				<div class="">
 					<label class="form-label">
 						Email
-						<input type="email" name="email" class="form-control" />
-						{#if form?.errorEmail != undefined}
-							<span class="error">{form?.errorEmail}</span>
-						{/if}
+						<input
+							type="email"
+							name="email"
+							class="form-control {form?.emailError != undefined ? 'error' : ''}"
+							value={form?.email ?? ''}
+						/>
+						<span class="error">{form?.emailError ?? ''}</span>
 					</label>
 				</div>
 			</div>
 			<div class="flex">
-				<div class="mb-1">
+				<div class="">
 					<label class="form-label">
 						Password
-						<input type="password" name="password" class="form-control" />
-						{#if form?.passwordError != undefined}
-							<span class="error">{form?.passwordError}</span>
-						{/if}
+						<input
+							type="password"
+							name="password"
+							class="form-control {form?.passwordError != undefined ? 'error' : ''}"
+							value={form?.password ?? ''}
+						/>
+						<span class="error">{form?.passwordError ?? ''}</span>
 					</label>
 				</div>
-				<div class="mb-1">
+				<div class="">
 					<label class="form-label">
 						Confirm password
-						<input type="password" name="passwordValidation" class="form-control" />
-						{#if form?.passwordValidationError != undefined}
-							<span class="error">{form?.passwordValidationError}</span>
-						{/if}
+						<input
+							type="password"
+							name="passwordValidation"
+							class="form-control {form?.passwordValidationError != undefined ||
+							form?.passwordError != undefined
+								? 'error'
+								: ''}"
+							value={form?.passwordValidation ?? ''}
+						/>
+						<span class="error">{form?.passwordValidationError ?? ''}</span>
 					</label>
 				</div>
 			</div>
 			{#if data.count == true}
 				<div class="flex">
-					<div class="mb-1">
+					<div class="">
 						<label class="form-label">
 							Password first connexion
-							<input type="password" name="pass" class="form-control" />
-							{#if form?.passError != undefined}
-								<span class="error">{form?.passError}</span>
-							{/if}
+							<input
+								type="password"
+								name="pass"
+								class="form-control {form?.passError != undefined ? 'error' : ''}"
+								value={form?.pass ?? ''}
+							/>
+							<span class="error">{form?.passError ?? ''}</span>
 						</label>
 					</div>
 					<div></div>
 				</div>
 			{/if}
-			<div class="mb-1">
-				{#if form?.messageError != undefined}
-					<span class="error">{form?.messageError}</span>
-				{/if}
+			<div class="">
+				<span class="error">{form?.messageError ?? ''}</span>
 			</div>
 			<button class="submit f--right"><i class="fas fa-user-alt"></i> Register</button>
 		</form>
@@ -99,10 +118,6 @@
 		display: flex;
 	}
 
-	.error {
-		color: red;
-		font-size: 0.8rem;
-	}
 	label {
 		width: 100%;
 	}
