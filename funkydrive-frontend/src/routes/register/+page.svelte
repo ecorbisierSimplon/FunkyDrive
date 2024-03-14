@@ -22,19 +22,19 @@
 			<div class="flex">
 				<div class="mb-1">
 					<label class="form-label">
-						First name:
-						<input type="text" name="first_name" class="form-control" />
-						{#if form?.nameError != undefined}
-							<span class="error">{form?.nameError}</span>
+						First name
+						<input type="text" name="firstName" class="form-control" />
+						{#if form?.firstNameError != undefined}
+							<span class="error">{form?.firstNameError}</span>
 						{/if}
 					</label>
 				</div>
 				<div class="mb-1">
 					<label class="form-label">
-						Last name:
-						<input type="text" name="sur_name" class="form-control" />
-						{#if form?.surnameError != undefined}
-							<span class="error">{form?.surnameError}</span>
+						Last name
+						<input type="text" name="lastName" class="form-control" />
+						{#if form?.lastNameError != undefined}
+							<span class="error">{form?.lastNameError}</span>
 						{/if}
 					</label>
 				</div>
@@ -42,7 +42,7 @@
 			<div>
 				<div class="mb-1">
 					<label class="form-label">
-						Email:
+						Email
 						<input type="email" name="email" class="form-control" />
 						{#if form?.errorEmail != undefined}
 							<span class="error">{form?.errorEmail}</span>
@@ -53,7 +53,7 @@
 			<div class="flex">
 				<div class="mb-1">
 					<label class="form-label">
-						Password:
+						Password
 						<input type="password" name="password" class="form-control" />
 						{#if form?.passwordError != undefined}
 							<span class="error">{form?.passwordError}</span>
@@ -62,22 +62,22 @@
 				</div>
 				<div class="mb-1">
 					<label class="form-label">
-						Confirm password:
-						<input type="password" name="password_validation" class="form-control" />
-						{#if form?.password_validationError != undefined}
-							<span class="error">{form?.password_validationError}</span>
+						Confirm password
+						<input type="password" name="passwordValidation" class="form-control" />
+						{#if form?.passwordValidationError != undefined}
+							<span class="error">{form?.passwordValidationError}</span>
 						{/if}
 					</label>
 				</div>
 			</div>
-			{#if data.count == 0}
+			{#if data.count == true}
 				<div class="flex">
 					<div class="mb-1">
 						<label class="form-label">
-							Password first connexion:
-							<input type="password" name="password_first" class="form-control" />
-							{#if form?.passwordFirstError != undefined}
-								<span class="error">{form?.passwordFirstError}</span>
+							Password first connexion
+							<input type="password" name="pass" class="form-control" />
+							{#if form?.passError != undefined}
+								<span class="error">{form?.passError}</span>
 							{/if}
 						</label>
 					</div>
@@ -89,7 +89,7 @@
 					<span class="error">{form?.messageError}</span>
 				{/if}
 			</div>
-			<button>Register</button>
+			<button class="submit f--right"><i class="fas fa-user-alt"></i> Register</button>
 		</form>
 	</section>
 {/if}
@@ -98,17 +98,7 @@
 	section {
 		display: flex;
 	}
-	form {
-		width: 500px;
-		position: relative;
-		margin: auto;
-		padding: 30px;
-		border-radius: 20px;
-		background-color: hsl(204, 100%, 95%);
-		box-shadow:
-			0px 0px 5px 0px hsl(204, 100%, 95%),
-			4px 4px 8px hsl(208 25% 43% / 1);
-	}
+
 	.error {
 		color: red;
 		font-size: 0.8rem;

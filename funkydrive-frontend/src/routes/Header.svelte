@@ -37,7 +37,7 @@
 		<div id="logo" class="logo">
 			<a href={hostname}>
 				<img src={logo} alt="" />
-				<span>FunkyDrive</span>
+				<span class="text3d">FunkyDrive</span>
 			</a>
 		</div>
 		<nav class="nav">
@@ -83,7 +83,7 @@
 
 <style lang="scss">
 	$mobil-max: 748px;
-
+	$bg: #e6e2df;
 	header {
 		margin: 10px;
 		@media screen and (max-width: $mobil-max) {
@@ -120,7 +120,7 @@
 				}
 				span {
 					font-family: 'Madimi One', sans-serif;
-					font-size: 2.9rem;
+					font-size: 4.5rem;
 					margin-left: 26px;
 					@media screen and (max-width: $mobil-max) {
 						font-size: 2rem;
@@ -258,5 +258,31 @@
 				margin-right: 5px;
 			}
 		}
+	}
+
+	.text3d {
+		color: hsl(208, 50%, 40%);
+		letter-spacing: 2px;
+		text-shadow:
+			-1px -1px 1px hsl(50, 27%, 91%),
+			0px 1px 0 hsl(208, 51%, 29%),
+			0px 2px 0 hsl(208, 50%, 28%),
+			0px 3px 0 hsl(208, 50%, 27%),
+			0px 4px 0 hsl(208, 50%, 25%),
+			0px 5px 0 hsl(208, 50%, 24%),
+			0px 6px 0 hsl(208, 50%, 23%),
+			0px 7px 0 hsl(208, 50%, 22%),
+			0px 8px 0 hsl(208, 50%, 22%),
+			0px 9px 0 hsl(208, 50%, 22%),
+			0px 10px 0 hsl(208, 50%, 21%),
+			0px 11px 0 hsl(208, 50%, 21%),
+			0px 12px 0 hsl(208, 50%, 20%),
+			0px 13px 0 hsl(208, 50%, 20%),
+			0px 14px 0 hsl(208, 50%, 19%),
+			0px 15px 0 hsl(208, 50%, 19%),
+			2px 20px 5px hsla(208, 50%, 0%, 0.9),
+			5px 23px 5px hsla(208, 50%, 0%, 0.3),
+			8px 27px 8px hsla(208, 50%, 0%, 0.5),
+			8px 28px 15px hsla(208, 50%, 0%, 0.9);
 	}
 </style>

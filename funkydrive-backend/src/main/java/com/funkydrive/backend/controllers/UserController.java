@@ -38,6 +38,13 @@ public class UserController {
 
     }
 
+    @GetMapping("/count")
+    public boolean getCount() {
+	boolean countUser = userService.getUserCount();
+	System.out.println(countUser);
+	return countUser;
+    }
+
     @GetMapping("/{id}")
     public User get(@PathVariable Long id) {
 	return userService.getUserById(id);

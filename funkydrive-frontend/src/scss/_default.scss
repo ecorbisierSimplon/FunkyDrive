@@ -20,3 +20,19 @@ h1,
 h2 {
 	font-family: 'Madimi One', sans-serif;
 }
+
+form {
+	// width: 500px;
+	max-width: calc(100vw - 25px);
+	position: relative;
+	margin: auto;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: hsl(208, 32%, 95%);
+	box-shadow:
+		-2px -1px 1px 0px #fff,
+		0px 0px 5px 0px hsl(208, 100%, 95%),
+		4px 4px 8px hsl(208 25% 43% / 1);
+	@include gd-tablet-max {
+	}
+}

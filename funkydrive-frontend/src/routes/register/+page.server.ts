@@ -1,41 +1,44 @@
 import { fail } from '@sveltejs/kit';
 import { ValidateForm } from '$lib/packages/Pattern';
 import type { PageServerLoad, Actions } from './$types';
-
-const API_URL = `http://app-backend:3000`;
+import { API_URL } from '$lib/server/variables';
+import { getWritable } from '$lib/packages/getWritable';
 
 export const load: PageServerLoad = async ({ cookies }) => {
-	const tempResponse = await fetch(`${API_URL}/user/count`, {
+	const api = getWritable(API_URL);
+	const tempResponse = await fetch(`${api}/user/count`, {
 		method: 'GET'
 	});
 	const responses = await tempResponse.json();
-	return { first_name: cookies.get('userName'), count: responses.count };
+	return { firstName: cookies.get('userName'), count: responses.count };
 };
 export const actions = {
 	register: async ({ request, cookies }) => {
 		const data = await request.formData();
 		const formData = await Object.fromEntries(data);
-		const first_name = formData.first_name;
-		const sur_name = formData.sur_name;
+		const firstName = formData.firstName;
+		const surName = formData.surName;
 		const email = formData.email;
 		const password = formData.password;
-		const password_validation = formData.password_validation;
-		const password_first = formData.password_first;
-		const countResponse = await fetch(`${API_URL}/user/count`, {
+		const passwordValidation = formData.passwordValidation;
+		const pass = formData.pass;
+		const api = getWritable(API_URL);
+		const countResponse = await fetch(`${api}/users/count`, {
 			method: 'GET'
 		});
 		const count = await countResponse.json();
+		console
 		let codes: number = 201;
 		let messagesError = {};
 		let testInput: string | null = null;
 
-		testInput = ValidateForm.validateField(first_name.toString(), 'firstname');
+		testInput = ValidateForm.validateField(firstName.toString(), 'firstname');
 		if (testInput) {
 			codes = 400;
 			messagesError = { ...messagesError, nameError: testInput };
 		}
 
-		testInput = ValidateForm.validateField(sur_name.toString(), 'lastname');
+		testInput = ValidateForm.validateField(surName.toString(), 'lastname');
 		if (testInput) {
 			codes = 400;
 			messagesError = { ...messagesError, surnameError: testInput };
@@ -53,18 +56,16 @@ export const actions = {
 			messagesError = { ...messagesError, passwordError: testInput };
 		}
 
-
-
-		if (password.toString() != password_validation.toString()) {
+		if (password.toString() != passwordValidation.toString()) {
 			codes = 400;
 			messagesError = {
 				...messagesError,
-				password_validationError: "The passwords isn't identical!"
+				passwordValidationError: "The passwords isn't identical!"
 			};
 		}
 		try {
-			testInput = ValidateForm.validatePassword(password_first.toString());
-			if (testInput && count.count === 0) {
+			testInput = ValidateForm.validatePassword(pass.toString());
+			if (testInput && count.count === true) {
 				codes = 400;
 				messagesError = {
 					...messagesError,
@@ -76,7 +77,7 @@ export const actions = {
 		if (codes === 400) {
 			return fail(codes, messagesError);
 		}
-		const tempResponse = await fetch(`${API_URL}/user/register`, {
+		const tempResponse = await fetch(`${api}/users/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -92,7 +93,7 @@ export const actions = {
 		} catch (error) {
 			return fail(400, { missing: true, messageError: 'A field does not completed !' });
 		}
-		cookies.set('userName', first_name as string, { path: '/' });
+		cookies.set('userName', firstName as string, { path: '/' });
 		return { success: true };
 	}
 } satisfies Actions;
