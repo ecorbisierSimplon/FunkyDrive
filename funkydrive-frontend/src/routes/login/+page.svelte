@@ -56,7 +56,7 @@
 				</label>
 			</div>
 
-			<button class="submit"><i class="fas fa-user-alt"></i> Log in</button>
+			<button class="submit f--right"><i class="fas fa-user-alt"></i> Log in</button>
 			<!-- <button formaction="?/register">Register</button> -->
 		</form>
 	</section>
@@ -65,17 +65,6 @@
 <style lang="scss">
 	section {
 		display: flex;
-	}
-	form {
-		width: 500px;
-		position: relative;
-		margin: auto;
-		padding: 30px;
-		border-radius: 20px;
-		background-color: hsl(204, 100%, 95%);
-		box-shadow:
-			0px 0px 5px 0px hsl(204, 100%, 95%),
-			4px 4px 8px hsl(208 25% 43% / 1);
 	}
 
 	p {

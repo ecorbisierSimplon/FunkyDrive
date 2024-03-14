@@ -53,6 +53,13 @@ public class UserService {
 	return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
     }
 
+    public boolean getUserCount() {
+	if (userRepository.count() > 0) {
+	    return false;
+	}
+	return true;
+    }
+
     // Méthode pour mettre à jour un utilisateur existant
     public void updateUser(long id, UpdateUser input) {
 	User user = getUserById(id);

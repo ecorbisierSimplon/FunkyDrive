@@ -3,14 +3,31 @@ button {
 	&.plus,
 	&.submit {
 		border-width: 0px;
-		padding: 5px 10px;
-		border-radius: 10px;
-		font-size: 18px;
+		padding: 4px 10px;
+		border-radius: 6px;
+		font-size: 1.1em;
+		margin: auto 5px;
 		transition:
 			color 0.15s ease-in-out,
 			background-color 0.15s ease-in-out,
 			border-color 0.15s ease-in-out,
 			box-shadow 0.15s ease-in-out;
+		@include gd-tablet-max {
+			padding: 3px 5px;
+			font-size: 1em;
+		}
+	}
+	&.f {
+		&--right {
+			float: right;
+		}
+		&--left {
+			float: left;
+		}
+		&--center {
+			display: block;
+			margin: auto;
+		}
 	}
 	&.remove {
 		background-color: #950000;
@@ -47,7 +64,7 @@ button {
 		}
 	}
 
-	.fa {
+	i {
 		margin-right: 0;
 	}
 	&[type='submit'] {
