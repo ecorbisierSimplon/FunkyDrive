@@ -2,8 +2,8 @@
 @use 'sass:map';
 @use 'sass:math';
 
-$color_p: 231;
-$color_bk: 205;
+$color_p: 220;
+$color_p2: 230;
 $base-font-size: 18px;
 $base-background: hsl($color_p, 47%, 17%);
 $border-color: hsl($color_p, 10%, 50%);
@@ -24,6 +24,14 @@ $padding: 28px;
 $position: calc(calc($size_point / 2) * -1);
 // $position: calc(calc(calc($size_point + calc($padding * 2)) / 2) * -1);
 
+$h-max: 6;
+$delta-size: 1.2;
+$base-size: 3; // Taille de police de base pour h1
+$base-spacing: 6; // Espacement de base
+
+$base-size-m: 2; // Taille de police de base pour h1
+$base-spacing-m: 4; // Espacement de base
+
 $breakpoints: (
 	pt-mobil-max: 399px,
 	mobil-max: 499px,
@@ -40,27 +48,6 @@ $orientation: (
 	paysage: landscape,
 	portrait: portrait
 );
-
-$base-size: 3; // Taille de police de base pour h1
-$base-spacing: 6; // Espacement de base
-
-@function calculate-font-size($level) {
-	@debug $level;
-	$levelNumber: calc($level * 1);
-	$calc: pow(1.5, $levelNumber - 1);
-	$multipl: calc($base-size * $calc);
-	@return calc($multipl * 1em);
-}
-
-@function calculate-letter-spacing($level) {
-	$levelNumber: calc($level * 1);
-	$diff: calc($base-spacing - $levelNumber);
-	$max: max($diff, 1);
-	@return calc($max * 1px);
-}
-
-$base-size-m: 2; // Taille de police de base pour h1
-$base-spacing-m: 4; // Espacement de base
 
 $text-shadow-values: ();
 /* contour */
@@ -87,41 +74,3 @@ $text-shadow-values: ();
 		comma
 	);
 }
-
-$base-size: 3; // Taille de police de base pour h1
-$base-spacing: 6; // Espacement de base
-
-$base-size-m: 2; // Taille de police de base pour h1
-$base-spacing-m: 4; // Espacement de base
-
-$saturationVibrant: 80 * 1%;
-$lightnessVibrant: 50 * 1%;
-$saturationPastel: 100 * 1%;
-$lightnessPastel: 80 * 1%;
-
-$colors_pastel: (
-	'default': rgb(211, 211, 211),
-	'red': hsl(0, $saturationPastel, $lightnessPastel),
-	'blue': hsl(240, $saturationPastel, $lightnessPastel),
-	'yellow': hsl(60, $saturationPastel, $lightnessPastel),
-	'green': hsl(120, $saturationPastel, $lightnessPastel),
-	'black': hsl(0, 0%, 50%),
-	'brown': hsl(30, $saturationPastel, $lightnessPastel),
-	'purple': hsl(270, $saturationPastel, $lightnessPastel),
-	'gray': hsl(0, 0%, $saturationPastel),
-	'white': hsl(0, 0%, 90%),
-	'pink': hsl(330, $saturationPastel, $lightnessPastel)
-);
-
-$colors_vibrant:
-	'default' rgb(245, 242, 242),
-	'red' hsl(0, $saturationVibrant, $lightnessVibrant),
-	'blue' hsl(240, $saturationVibrant, $lightnessVibrant),
-	'yellow' hsl(60, $saturationVibrant, $lightnessVibrant),
-	'green' hsl(120, $saturationVibrant, $lightnessVibrant),
-	'black' hsl(0, 0%, 0%),
-	'brown' hsl(30, $saturationVibrant, 30%),
-	'purple' hsl(270, $saturationVibrant, $lightnessVibrant),
-	'gray' hsl(0, 0%, $lightnessVibrant),
-	'white' hsl(0, 0%, 100%),
-	'pink' hsl(330, $saturationVibrant, $lightnessVibrant);

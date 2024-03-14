@@ -41,26 +41,26 @@ button {
 		}
 	}
 	&.plus {
-		background-color: hsl(231.08deg 54.61% 50.01%);
+		background-color: hsl($color_p2, 55%, 50%);
 		box-shadow:
-			1px 1px 0px 2px hsl(231, 53%, 17%),
+			1px 1px 0px 2px hsl($color_p2, 53%, 17%),
 			1px 1px 2px 2px hsla(0, 4%, 54%, 0.604);
 		&:hover {
 			box-shadow:
 				1px 1px 2px 2px hsla(0, 4%, 54%, 0.604),
-				-1px -1px 2px 2px hsl(231, 53%, 17%);
+				-1px -1px 2px 2px hsl($color_p2, 53%, 17%);
 		}
 	}
 	&.submit {
-		background-color: hsl(208deg 52.51% 67.15%);
+		background-color: hsl($color_p, 52%, 67%);
 		box-shadow:
-			1px 1px 0px 2px hsl(234, 6%, 32%),
+			1px 1px 0px 2px hsl($color_p2, 6%, 32%),
 			1px 1px 2px 2px hsla(0, 4%, 54%, 0.604);
 		&:hover {
-			background-color: hsl(208, 44%, 76%);
+			background-color: hsl($color_p, 44%, 76%);
 			box-shadow:
 				1px 1px 2px 2px hsla(0, 4%, 54%, 0.604),
-				-1px -1px 2px 2px hsl(230, 3%, 41%);
+				-1px -1px 2px 2px hsl($color_p2, 3%, 41%);
 		}
 	}
 
@@ -68,16 +68,16 @@ button {
 		margin-right: 0;
 	}
 	&[type='submit'] {
-		background-color: hsl(231, 35%, 66%);
+		background-color: hsl($color_p2, 35%, 66%);
 		box-shadow:
-			1px 1px 0px 2px hsl(231, 53%, 17%),
+			1px 1px 0px 2px hsl($color_p2, 53%, 17%),
 			1px 1px 2px 2px hsla(0, 4%, 54%, 0.604);
 		&:hover {
-			color: hsl(231, 93%, 17%);
-			background-color: hsl(231, 56%, 80%);
+			color: hsl($color_p2, 93%, 17%);
+			background-color: hsl($color_p2, 56%, 80%);
 			box-shadow:
 				1px 1px 2px 2px hsla(0, 4%, 54%, 0.604),
-				-1px -1px 2px 2px hsl(231, 53%, 17%);
+				-1px -1px 2px 2px hsl($color_p2, 53%, 17%);
 		}
 	}
 }

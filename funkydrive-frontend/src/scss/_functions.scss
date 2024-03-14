@@ -1,8 +1,17 @@
 @function calculate-font-size($level) {
-	$levelNumber: calc($level * 1);
-	$calc: pow(1.5, $levelNumber - 1);
-	$multipl: calc($base-size * $calc);
-	@return calc($multipl * 1em);
+	$base: calc($base-size / $h-max); // 6 correpond au total de h ("h1" à h6)
+	$base: calc($base * $delta-size);
+
+	$base: calc($base - $base-size);
+	$base: calc($base / calc($h-max - 1)); // 6 correpond au total de h (h1 à h6)  - 1
+
+	$levelNumber: calc($level - 1);
+
+	$levelDelta: calc($levelNumber * $base);
+
+	$calc: calc($base-size + $levelDelta);
+
+	@return calc($calc * 1em);
 }
 
 @function calculate-letter-spacing($level) {
@@ -13,10 +22,19 @@
 }
 
 @function calculate-font-size-mobil($level) {
-	$levelNumber: calc($level * 1);
-	$calc: pow(1.5, $levelNumber - 1);
-	$multipl: calc($base-size-m * $calc);
-	@return calc($multipl * 1em);
+	$base: calc($base-size-m / $h-max); // 6 correpond au total de h ("h1" à h6)
+	$base: calc($base * $delta-size);
+
+	$base: calc($base - $base-size-m);
+	$base: calc($base / calc($h-max - 1)); // 6 correpond au total de h (h1 à h6)  - 1
+
+	$levelNumber: calc($level - 1);
+
+	$levelDelta: calc($levelNumber * $base);
+
+	$calc: calc($base-size-m + $levelDelta);
+
+	@return calc($calc * 1em);
 }
 
 @function calculate-letter-spacing-mobil($level) {

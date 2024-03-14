@@ -82,8 +82,17 @@
 </header>
 
 <style lang="scss">
+	$color_p: 220;
+	$color_p2: 230;
+
 	$mobil-max: 748px;
-	$bg: #e6e2df;
+	$pc-min: calc($mobil-max + 1px);
+	$bg: hsl(26, 12%, 89%);
+
+	$logo-size-desktop: 4;
+	$logo-size-mobil: 2;
+	$logo-size-delta: calc(1 + (calc(1 - calc(calc($logo-size-desktop / $logo-size-mobil) / 10))));
+
 	header {
 		margin: 10px;
 		@media screen and (max-width: $mobil-max) {
@@ -120,7 +129,7 @@
 				}
 				span {
 					font-family: 'Madimi One', sans-serif;
-					font-size: 4.5rem;
+					font-size: 4.5em;
 					margin-left: 26px;
 					@media screen and (max-width: $mobil-max) {
 						font-size: 2rem;
@@ -169,7 +178,7 @@
 						box-shadow: 2px 2px 9px 2px hsla(310, 5%, 23%, 0.637);
 						width: 35vw;
 						height: 100vh;
-						background-color: hsl(212, 53%, 75%);
+						background-color: hsl($color_p, 25%, 65%);
 						padding: 8px;
 						@media screen and (max-width: $mobil-max) {
 							width: 260px;
@@ -201,7 +210,7 @@
 				border-bottom: groove;
 				border-right: groove;
 				overflow: visible;
-				background-color: hsl(212, 72%, 81%);
+				background-color: hsl($color_p, 50%, 70%);
 			}
 
 			&__box {
@@ -260,29 +269,66 @@
 		}
 	}
 
+	@function generate-text-shadow($shadow-size) {
+		$shadow-size-delta: calc($shadow-size / 0.8);
+		$hsl-base: hsl($color_p, 61%, 30%);
+		$hsla-base: hsla($color_p, 50%, 0%, 0.9);
+
+		$shadows: ();
+
+		$shadows: append(
+			$shadows,
+			#{calc(-1px / #{$shadow-size}) calc(-1px / #{$shadow-size}) calc(1px / #{$shadow-size})
+				hsl(50, 27%, 91%)},
+			comma
+		);
+
+		@for $i from 1 through 15 {
+			$shadows: append(
+				$shadows,
+				#{calc(0px / #{$shadow-size-delta})
+					calc(#{$i}px / #{$shadow-size-delta})
+					calc(0px / #{$shadow-size-delta})
+					hsl($color_p, 61%, calc(calc(30 - $i) * 1%))},
+				comma
+			);
+		}
+
+		$shadows: append(
+			$shadows,
+			#{calc(2px / #{$shadow-size-delta}) calc(20px / #{$shadow-size-delta})
+				calc(5px / #{$shadow-size-delta}) #{$hsla-base}},
+			comma
+		);
+		$shadows: append(
+			$shadows,
+			#{calc(5px / #{$shadow-size-delta}) calc(23px / #{$shadow-size-delta})
+				calc(5px / #{$shadow-size-delta}) hsla($color_p, 50%, 0%, 0.3)},
+			comma
+		);
+		$shadows: append(
+			$shadows,
+			#{calc(8px / #{$shadow-size-delta}) calc(27px / #{$shadow-size-delta})
+				calc(8px / #{$shadow-size-delta}) hsla($color_p, 50%, 0%, 0.5)},
+			comma
+		);
+		$shadows: append(
+			$shadows,
+			#{calc(8px / #{$shadow-size-delta}) calc(28px / #{$shadow-size-delta})
+				calc(15px / #{$shadow-size-delta}) hsla($color_p, 50%, 0%, 0.9)},
+			comma
+		);
+
+		@return $shadows;
+	}
+
 	.text3d {
-		color: hsl(208, 50%, 40%);
+		color: hsl($color_p, 41%, 50%);
 		letter-spacing: 2px;
-		text-shadow:
-			-1px -1px 1px hsl(50, 27%, 91%),
-			0px 1px 0 hsl(208, 51%, 29%),
-			0px 2px 0 hsl(208, 50%, 28%),
-			0px 3px 0 hsl(208, 50%, 27%),
-			0px 4px 0 hsl(208, 50%, 25%),
-			0px 5px 0 hsl(208, 50%, 24%),
-			0px 6px 0 hsl(208, 50%, 23%),
-			0px 7px 0 hsl(208, 50%, 22%),
-			0px 8px 0 hsl(208, 50%, 22%),
-			0px 9px 0 hsl(208, 50%, 22%),
-			0px 10px 0 hsl(208, 50%, 21%),
-			0px 11px 0 hsl(208, 50%, 21%),
-			0px 12px 0 hsl(208, 50%, 20%),
-			0px 13px 0 hsl(208, 50%, 20%),
-			0px 14px 0 hsl(208, 50%, 19%),
-			0px 15px 0 hsl(208, 50%, 19%),
-			2px 20px 5px hsla(208, 50%, 0%, 0.9),
-			5px 23px 5px hsla(208, 50%, 0%, 0.3),
-			8px 27px 8px hsla(208, 50%, 0%, 0.5),
-			8px 28px 15px hsla(208, 50%, 0%, 0.9);
+		text-shadow: generate-text-shadow(calc($logo-size-desktop / $logo-size-desktop));
+
+		@media screen and (max-width: $mobil-max) {
+			text-shadow: generate-text-shadow($logo-size-delta);
+		}
 	}
 </style>
