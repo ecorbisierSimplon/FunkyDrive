@@ -20,7 +20,7 @@ public class Directory {
     private Long id;
 
     @Column(name = "name")
-    private String name;
+    private String directory;
 
     @Column(name = "id_directory")
     private int idDirectory = 0;
@@ -42,11 +42,11 @@ public class Directory {
     }
 
     public String getName() {
-	return name;
+	return directory;
     }
 
-    public void setName(String name) {
-	this.name = name;
+    public void setName(String directory) {
+	this.directory = directory;
     }
 
     public int getIdDirectory() {
