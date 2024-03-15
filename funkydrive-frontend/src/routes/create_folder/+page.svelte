@@ -2,11 +2,11 @@
 	import { name, showFolder } from './store';
 	import { fileTab } from './store';
 
-	let fileName = '';
+	let directory = '';
 
 	export function addFile() {
 		$showFolder = true;
-		fileName += $name;
+		directory += $name;
 		$fileTab.push($name);
 		console.log('test : ' + $name);
 	}
@@ -17,7 +17,7 @@
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ fileName })
+			body: JSON.stringify({ directory })
 		});
 
 		if(response.ok){
@@ -26,6 +26,7 @@
 		} else {
 			console.error("Error:" + response.status);
 		}
+		addFile();
 	}
 
 

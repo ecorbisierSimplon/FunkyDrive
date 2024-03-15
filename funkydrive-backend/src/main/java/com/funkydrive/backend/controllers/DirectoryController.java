@@ -4,14 +4,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.funkydrive.backend.entities.createFolder;
+import com.funkydrive.backend.entities.Directory;
+
 
 import jakarta.validation.Valid;
 
 @RestController
-public class folderController {
+public class DirectoryController {
     @PostMapping("/create_folder")
-    public String postFolder(@Valid @RequestBody createFolder myFolder){
+    public String postFolder(@Valid @RequestBody Directory myDirectory){
         return "Folder created";
     }
     
