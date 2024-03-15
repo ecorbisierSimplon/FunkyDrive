@@ -3,10 +3,10 @@ button {
 	&.plus,
 	&.submit {
 		border-width: 0px;
-		padding: 4px 10px;
+		padding: 4px 10px 1px;
 		border-radius: 6px;
 		font-size: 1.1em;
-		margin: auto 5px;
+		margin: 10px 5px 1px;
 		transition:
 			color 0.15s ease-in-out,
 			background-color 0.15s ease-in-out,
@@ -20,6 +20,7 @@ button {
 	&.f {
 		&--right {
 			float: right;
+			margin-right: 10px;
 		}
 		&--left {
 			float: left;

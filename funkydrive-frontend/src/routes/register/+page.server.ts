@@ -6,18 +6,19 @@ import { getWritable } from '$lib/packages/getWritable';
 
 export const load: PageServerLoad = async ({ cookies }) => {
 	const api = getWritable(API_URL);
-	const tempResponse = await fetch(`${api}/user/count`, {
+	const tempResponse = await fetch(`${api}/users/count`, {
 		method: 'GET'
 	});
 	const responses = await tempResponse.json();
-	return { firstName: cookies.get('userName'), count: responses.count };
+	console.log(responses);
+	return { firstName: cookies.get('userName'), count: responses };
 };
 export const actions = {
 	register: async ({ request, cookies }) => {
 		const data = await request.formData();
 		const formData = await Object.fromEntries(data);
 		const firstName = formData.firstName;
-		const surName = formData.surName;
+		const lastName = formData.lastName;
 		const email = formData.email;
 		const password = formData.password;
 		const passwordValidation = formData.passwordValidation;
@@ -27,21 +28,21 @@ export const actions = {
 			method: 'GET'
 		});
 		const count = await countResponse.json();
-		console
+		console.log(count);
 		let codes: number = 201;
-		let messagesError = {};
+		let messagesError = formData;
 		let testInput: string | null = null;
 
-		testInput = ValidateForm.validateField(firstName.toString(), 'firstname');
+		testInput = ValidateForm.validateField(firstName.toString(), 'first name');
 		if (testInput) {
 			codes = 400;
-			messagesError = { ...messagesError, nameError: testInput };
+			messagesError = { ...messagesError, firstNameError: testInput };
 		}
 
-		testInput = ValidateForm.validateField(surName.toString(), 'lastname');
+		testInput = ValidateForm.validateField(lastName.toString(), 'last name');
 		if (testInput) {
 			codes = 400;
-			messagesError = { ...messagesError, surnameError: testInput };
+			messagesError = { ...messagesError, lastNameError: testInput };
 		}
 
 		testInput = ValidateForm.validateEmail(email.toString());
@@ -65,19 +66,21 @@ export const actions = {
 		}
 		try {
 			testInput = ValidateForm.validatePassword(pass.toString());
-			if (testInput && count.count === true) {
+			if (testInput && count === true) {
 				codes = 400;
 				messagesError = {
 					...messagesError,
-					passwordFirstError: testInput
+					passError: testInput
 				};
 			}
-		} catch (error) {}
+		} catch (error) {
+			return fail(codes, messagesError);
+		}
 
 		if (codes === 400) {
 			return fail(codes, messagesError);
 		}
-		const tempResponse = await fetch(`${api}/users/register`, {
+		const tempResponse = await fetch(`${api}/users`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
