@@ -3,6 +3,9 @@
 ## back-end
 
 ## front-end
+```dotnetcli
+cd funkydrive-frontend/
+```
 
 * TEST
   * GLOBALS
@@ -13,7 +16,7 @@
   * INTEGRATION
     * In line : ```npm run test:integration```
     * HTML : ```npm run test:html```
-    * 
+
 ## SOURCE
 
 - [Create Docker Compose et Docker file for JAVA, Spring Boot and Maven](https://dev.to/tienbku/docker-compose-spring-boot-and-postgres-example-4l82)
