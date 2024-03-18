@@ -1,5 +1,19 @@
 # funkydrive
 
+## back-end
+
+## front-end
+
+* TEST
+  * GLOBALS
+    * ```npm run test```
+  * ONE TO ONE
+    * ```npm run test:unit```   
+    
+  * INTEGRATION
+    * In line : ```npm run test:integration```
+    * HTML : ```npm run test:html```
+    * 
 ## SOURCE
 
 - [Create Docker Compose et Docker file for JAVA, Spring Boot and Maven](https://dev.to/tienbku/docker-compose-spring-boot-and-postgres-example-4l82)
