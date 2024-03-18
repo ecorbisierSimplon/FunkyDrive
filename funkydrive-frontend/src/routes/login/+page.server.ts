@@ -1,12 +1,12 @@
-import { fail, type Cookies } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
-const importJwt = () => import('jsonwebtoken');
+import { fail } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
 import { session } from '../session';
 import { getCookie } from 'typescript-cookie';
+import { ValidateForm } from '$lib/packages/Pattern';
 
 const API_URL = process.env.API_URL;
 
-export async function load({ cookies }: any) {
+export const load: PageServerLoad = async ({ cookies }) => {
 	const userString = cookies.get('user');
 	const sessionid = cookies.get('sessionid');
 	if (userString) {
@@ -30,13 +30,35 @@ export async function load({ cookies }: any) {
 }
 
 export const actions = {
-	login: async ({ cookies, request, url }) => {
+	login: async ({ cookies, request }) => {
 		const data = await request.formData();
-		const email: string = data.get('email') as string;
-		const password: string = data.get('password') as string;
-		const remember: string = data.get('remember') as string;
+		const formData = await Object.fromEntries(data);
+		const email: string = formData.email as string;
+		const password: string = formData.password as string;
+		const remember: string = formData.remember as string;
 
-		const tempResponse = await fetch(`${API_URL}/user/email/${email}`);
+
+		let codes: number = 201;
+		let messagesError = formData;
+		let testInput: string | null = null;
+
+		testInput = ValidateForm.validateEmail(email.toString());
+		if (testInput) {
+			codes = 400;
+			messagesError = { ...messagesError, emailError: testInput };
+		}
+
+		testInput = ValidateForm.validatePassword(password.toString());
+		if (testInput) {
+			codes = 400;
+			messagesError = { ...messagesError, passwordError: testInput };
+		}
+
+		if (codes === 400) {
+			return fail(codes, messagesError);
+		}
+
+		const tempResponse = await fetch(`${API_URL}/users/email/${email}`);
 		const responses = await tempResponse.json();
 		try {
 			const response: string = responses.user.email;
@@ -56,6 +78,8 @@ export const actions = {
 		const userString = JSON.stringify(await userRemember);
 		cookies.set('user', userString, { path: '/' });
 
+
+
 		try {
 			// Faites une requête d'authentification au backend (par exemple, avec fetch ou axios)
 			const response = await fetch(`${API_URL}/auth/login`, {
@@ -69,20 +93,10 @@ export const actions = {
 				cookies.set('sessionid', token.access_token, { path: '/' });
 				// cookies.set('remember')
 				session.set(false);
-				const user = (await fetch(`${API_URL}/user/email/${email}`)).json();
 				const userString = JSON.stringify(await userRemember);
 				cookies.set('user', userString, { path: '/' });
 				return { success: true };
 			}
-
-			// if (response.ok) {
-			// 	const { userId, username } = await response.json();
-			// 	const jwt = await importJwt();
-			// 	const token = jwt.sign({ sub: userId, username }, 'your-secret-key', { expiresIn: '30d' });
-			// 	localStorage.setItem('token', token);
-			// 	console.log(token);
-			// 	return { success: true };
-			// }
 
 			return null;
 		} catch (error) {
