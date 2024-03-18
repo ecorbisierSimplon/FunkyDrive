@@ -21,6 +21,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Login | Funkydrive</title>
+	<meta name="description" content="Drive" />
+</svelte:head>
+
 <h2>Login</h2>
 {#if $session}
 	<div class="modals">
@@ -37,12 +42,14 @@
 				<label class="form-label"
 					>Email
 					<input name="email" type="text" class="form-control" />
+					<span class="error">{form?.emailError ?? ''}</span>
 				</label>
 			</div>
 			<div class="mb-3">
 				<label class="form-label"
 					>Password
 					<input name="password" type="password" class="form-control" />
+					<span class="error">{form?.passwordError ?? ''}</span>
 				</label>
 			</div>
 			<div class="error">

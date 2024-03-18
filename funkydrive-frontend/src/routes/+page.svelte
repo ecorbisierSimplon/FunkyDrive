@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Home | Funkydrive</title>
 	<meta name="description" content="Drive" />
 </svelte:head>
 
