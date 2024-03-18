@@ -49,7 +49,7 @@
 			/>
 			<!-- <label for="navicon-checkbox" class="navicon__label"> -->
 			<!-- for="navicon-checkbox" -->
-			<button class="navicon__label" on:click|stopPropagation={handleMenu}>
+			<button id="navicon__bt" class="navicon__label" on:click|stopPropagation={handleMenu}>
 				<span class="navicon__box">
 					<span class="navicon__hamburger"></span>
 					<span class="navicon__hamburger"></span>

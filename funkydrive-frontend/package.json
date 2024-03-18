@@ -12,6 +12,8 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
+		"test:html": "playwright test --headed",
+		"test:report": "playwright show-report",
 		"test:unit": "vitest"
 	},
 	"devDependencies": {
